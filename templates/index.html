@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantum Parity Check Simulator</title>
+    <meta name="description" content="Learn and simulate how quantum parity check works to detect errors in qubits using Qiskit.">
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">⚛️ Quantum Parity</div>
+        <nav>
+            <a href="/" class="active">Home</a>
+            <a href="/simulator">Simulator</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section class="hero-section text-center">
+            <h1>Quantum Parity Check Simulator</h1>
+            <p class="subtitle">Learn how quantum computers detect errors using parity checks.</p>
+            <div class="action-buttons">
+                <a href="/simulator" class="btn primary-btn">Start Simulator</a>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="card">
+                <h2>What is Parity?</h2>
+                <p>Parity is a property of a binary string that tells us whether the number of 1s in the string is <strong>even</strong> or <strong>odd</strong>.</p>
+                <ul class="styled-list">
+                    <li><strong>Even Parity:</strong> The number of 1s is even (e.g., 00, 11, 1010).</li>
+                    <li><strong>Odd Parity:</strong> The number of 1s is odd (e.g., 01, 10, 1110).</li>
+                </ul>
+            </div>
+
+            <div class="card highlight-card">
+                <h2>Why Quantum Parity Checking?</h2>
+                <p>In classical computing, checking parity is straightforward. In quantum computing, measuring a qubit collapses its delicate quantum state (superposition). To detect errors without destroying the quantum information of our data qubits, we use an extra qubit called an <strong>ancilla qubit</strong>.</p>
+                <p>By interacting the data qubits with the ancilla using <strong>CNOT (Controlled-NOT)</strong> gates and then only measuring the ancilla, we can find out the parity of the data qubits while leaving their delicate quantum states intact! This is a core concept of quantum error correction.</p>
+            </div>
+
+            <div class="card">
+                <h2>How It Works</h2>
+                <ol class="styled-list">
+                    <li>Start with your data qubits and one ancilla qubit (initialized to 0).</li>
+                    <li>Apply a CNOT gate from each data qubit (control) to the ancilla qubit (target).</li>
+                    <li>If a data qubit is in state 1, it flips the ancilla. If the total number of 1s is odd, the ancilla flips an odd number of times (ending at state 1). If even, it flips an even number of times (ending at state 0).</li>
+                    <li>Measure the ancilla qubit. The result tells you the parity of the data qubits!</li>
+                </ol>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Built for educational purposes. Explore the quantum realm! 🌌</p>
+    </footer>
+</body>
+</html>

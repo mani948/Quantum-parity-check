@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantum Parity Simulator</title>
+    <meta name="description" content="Simulate a quantum parity check algorithm to detect errors in quantum states.">
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">⚛️ Quantum Parity</div>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/simulator" class="active">Simulator</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <h1 class="text-center">Interactive Parity Check Simulator</h1>
+        <p class="text-center subtitle">Configure your qubits and see the quantum circuit in action.</p>
+
+        <div class="simulator-layout">
+            <aside class="controls-panel card">
+                <h3>Configuration</h3>
+                
+                <div class="control-group">
+                    <label for="num-qubits">Number of Data Qubits: <span id="qubit-count-val">2</span></label>
+                    <input type="range" id="num-qubits" min="2" max="5" value="2">
+                </div>
+
+                <div class="control-group" id="qubits-container">
+                    <!-- Qubit toggles will be generated here -->
+                </div>
+
+                <div class="control-group toggle-group mt-large">
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="introduce-error">
+                        <span class="slider" style="margin-right: 15px;"></span>
+                        Simulate Error (Bit Flip)
+                    </label>
+                </div>
+                
+                <div class="control-group mt-large" id="error-config" style="display: none;">
+                    <label for="error-target">Error Target Qubit:</label>
+                    <select id="error-target">
+                        <!-- Options generated dynamically -->
+                    </select>
+                </div>
+
+                <button id="simulate-btn" class="btn primary-btn full-width mt-large">Run Simulation</button>
+            </aside>
+
+            <section class="results-panel card">
+                <div id="loading" class="hidden">
+                    <div class="spinner"></div>
+                    <p class="text-center" style="color: var(--text-muted)">Executing on Quantum Simulator...</p>
+                </div>
+                
+                <div id="results-display" class="hidden">
+                    <div class="result-highlight">
+                        <h3>Parity Result</h3>
+                        <div class="parity-badge" id="parity-result">EVEN</div>
+                        <p style="color: var(--text-muted); font-size: 1.1rem; margin-top: 0.5rem">Ancilla Measurement: <strong id="ancilla-meas" style="color: white">0</strong></p>
+                    </div>
+
+                    <div class="circuit-diagram">
+                        <h3>Quantum Circuit</h3>
+                        <img id="circuit-img" src="" alt="Quantum Circuit Diagram">
+                    </div>
+                </div>
+                
+                <div id="welcome-box" class="text-center" style="padding: 4rem 1rem">
+                    <h3 style="color: #64748b; margin-bottom: 1rem;">Waiting for Simulation</h3>
+                    <p style="color: #475569">Configure the inputs on the left and click "Run Simulation" to generate the circuit and results.</p>
+                </div>
+            </section>
+        </div>
+    </main>
+    
+    <script src="/static/script.js"></script>
+</body>
+</html>
